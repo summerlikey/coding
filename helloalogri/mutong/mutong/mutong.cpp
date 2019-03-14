@@ -46,7 +46,7 @@ int main()
 }
 */
 //maopaopaixu
-
+/*
 int main()
 {
 	int a[100], i, j, t,n;
@@ -69,4 +69,37 @@ int main()
 	return 0;
 }
 
+*/
 
+
+//冒泡排序结构体，分数姓名排序
+
+struct student
+{
+	char name[21];//字符串成员
+	char score;//字符成员数据
+};
+
+int main()
+{
+	struct student a[100], t;
+	int i, j, n;
+	scanf_s("%d", &n);
+	for (i = 1; i <= n; i++)
+	{
+		scanf_s("%c %d", a[i].name,&a[i].score);
+	}
+	for (i = 1; i <= n-1; i++)
+	{
+		for (j = 1; j <= n - i; j++)
+		{
+			if (a[j].score < a[j + 1].score)
+			{t = a[j]; a[j + 1] = a[j]; a[j] = t;}
+		}
+	}
+	for (i = 1; i <= n; i++)
+	{
+		printf_s("%s\n %d", a[i].name, a[i].score);
+	}
+	return 0;
+}
