@@ -1,0 +1,4 @@
+﻿  kuaisupaixu.cpp
+i:\code\coding\helloalogri\kuaisupaixu\kuaisupaixu\kuaisupaixu.cpp(36): warning C4101: “j”: 未引用的局部变量
+i:\code\coding\helloalogri\kuaisupaixu\kuaisupaixu\kuaisupaixu.cpp(36): warning C4101: “t”: 未引用的局部变量
+  kuaisupaixu.vcxproj -> I:\code\coding\helloalogri\kuaisupaixu\Debug\kuaisupaixu.exe
