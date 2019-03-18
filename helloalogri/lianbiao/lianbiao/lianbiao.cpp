@@ -72,6 +72,24 @@ int main()
 		q = p;//指针q也指向当前啊结点
 
 	}
+	t = head;//从头部开始遍历
+
+
+	scanf_s("%d", &a);//输入待插入的数
+	while (t != NULL)//当没有到达链表尾部的时候循环
+	{
+		if (t->next->data > a)//如果当前结点下一个结点的值大于待插入数，将数插入中间
+		{
+			p = (struct node*)malloc(sizeof(struct node));//动态申请一个空间，用来存放新增节点
+			p->data = a;
+			p->next = t->next;//新增结点的后继指针指向当前结点的后结点
+			t->next = p;//当前结点的后继指针指向新增结点
+			break;
+		}
+		t = t->next;//继续下一个结点
+	}
+
+
 	//输出链表中的所有数
 	t = head;
 	while (t != NULL)
