@@ -78,6 +78,8 @@ int main()
 
 
 //下面使用a,b,c进行全排列
+
+/*
 int book[10], n;
 char a[10];
 char b[10];
@@ -126,4 +128,52 @@ int main()
 	dfs(1);
 
 	return 0;
+}
+
+*/
+
+//问题描述，使用1-9个数字不重复，使得等式OOO+OOO=OOO成立，列出所有不重复的式子
+
+
+int a[10], book[10];
+int total = 0;
+
+void dfs(int step)
+{
+	int i ;
+	if (step ==10)
+	{
+		if (a[1] * 100 + a[2] * 10 + a[3] + a[4] * 100 + a[5] * 10 + a[6] == a[7] * 100 + a[8] * 10 + a[9])
+		{
+			total++;
+			for (i = 1; i <= 9; i++)
+			{
+				printf_s("%d", a[i]);
+			}
+			printf_s("\n");
+			
+		}
+		return;
+	}
+
+	for (i = 1; i <= 9; i++)
+	{
+		if (book[i] == 0)
+		{
+			a[step] = i;
+			book[i] = 1;
+			dfs(step + 1);
+			book[i] = 0;
+		}
+	}
+
+
+	return;//返回函数
+}
+int main()
+{
+
+	dfs(1);//从1开始
+	printf_s("total=%d", total / 2);
+	return 0;//程序结束
 }
