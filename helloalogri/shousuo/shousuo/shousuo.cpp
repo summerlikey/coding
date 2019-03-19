@@ -133,7 +133,7 @@ int main()
 */
 
 //问题描述，使用1-9个数字不重复，使得等式OOO+OOO=OOO成立，列出所有不重复的式子
-
+/*
 
 int a[10], book[10];
 int total = 0;
@@ -176,4 +176,72 @@ int main()
 	dfs(1);//从1开始
 	printf_s("total=%d", total / 2);
 	return 0;//程序结束
+}
+
+*/
+
+
+//深度搜索求出最短路径
+int p, q;
+int a[51][51], book[51][51];
+int n, m, min = 99999999;
+
+
+void dfs(int x, int y, int step)
+{
+	int next[4][2] = {{0,1},//向右走
+	                  {1,0},//向下走
+	                  {0,-1},//向左走
+	                  {-1,0}//向上走
+	                  };
+	int tx, ty, k;
+	//退出条件判断是否到达位置
+	if (x == p && y == q)
+	{
+		//printf_s("%d ", step);//每次走了多少步
+		//多个选择到达最底层，更新最小值
+		if (step < min)
+			min = step;
+		return;//返回
+	}
+	for (k = 0; k <= 3; k++)//枚举四种走法，
+	{
+		//计算下一个点的坐标
+		tx = x + next[k][0];
+		ty = y + next[k][1];
+		//判断是否越界
+		if (tx<1 || tx>n || ty<1 || ty>m)
+			continue;
+		//判断该点是否为障碍物或者已经再路径中
+		if (a[tx][ty] == 0 && book[tx][ty] == 0)
+		{
+			book[tx][ty] = 1;
+			dfs(tx, ty, step + 1);
+			book[tx][ty] = 0;
+		}
+	}
+
+	return;
+}
+int main()
+{
+	int i, j, startx, starty;
+	//读入n和m,n为行，m为列
+	scanf_s("%d %d", &n, &m);
+	
+	//读入迷宫
+	for (i = 1; i <= n; i++)
+	{
+		for (j = 1; j <= m; j++)
+			scanf_s("%d", &a[i][j]);
+	}
+	scanf_s("%d %d %d %d", &startx, &starty, &p, &q);
+
+	//从七点开始搜索
+	book[startx][startx] = 1;
+	dfs(startx, starty, 0);
+
+	printf_s("%d", min);
+
+	return 0;
 }
