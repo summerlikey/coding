@@ -1,0 +1,4 @@
+﻿  源.cpp
+i:\code\coding\helloalogri\shuiguangong\shuiguangong\源.cpp(24): warning C4101: “i”: 未引用的局部变量
+i:\code\coding\helloalogri\shuiguangong\shuiguangong\源.cpp(80): warning C4101: “num”: 未引用的局部变量
+  shuiguangong.vcxproj -> I:\code\coding\helloalogri\shuiguangong\Debug\shuiguangong.exe
