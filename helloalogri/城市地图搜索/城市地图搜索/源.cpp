@@ -78,8 +78,9 @@ int main()
 int main()
 {
 	int e[101][101];
-	int que[10001], i, j, n, m, cur, a, b, c, book[10000] = { 0 };
+	int que[10001], i, j, n, m, cur, a, b, c, book[10000] = { 0 },flag;
 	int min = 999999,dis=0;
+	int mmin = 9999;
 	int head;
 	int tail;
 	scanf_s("%d %d", &n, &m);//n个城市，m条路
@@ -110,12 +111,26 @@ int main()
 				book[i] = 1;
 				que[tail] = i;
 				dis = dis + e[cur][i];
-				if (min > dis)
-					min = dis;
+		
 				
 			}
+			if (i == c)
+			{
+				flag = 1;
+				if (min > dis)
+					min = dis;
+				break;
+			}
 		}
+		if (flag == 1)
+		{
+			if (mmin > min)
+				mmin = min;
+			break;
+		}
+
 		head++;
+
 	}
 	printf_s("%d ", min); 
 	getchar(); getchar();
