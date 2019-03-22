@@ -19,18 +19,31 @@ int a[51][51];
 int book[51][51];
 int n, m;
 int flag=0;
+struct note
+{
+	int a;
+	int b;
+
+}s[100];
+int top = 0;
 void dfs(int x, int y, int front)
 {
 	int i;
 	if (x==n&& y==m + 1)
 	{
 		flag = 1;
+		for (i = 1; i <= top; i++)
+			printf_s("(%d,%d)", s[i].a, s[i].b);
 		return;
 	}
 	if (x<1 || x>n || y<1 || y>m)//越界，此路不通
 		return;
 	if (book[x][y] == 1)
 		return;
+	book[x][y] == 1;
+	top++;
+	s[top].a = x;
+	s[top].b = y;
 	if (a[x][y] >= 5 && a[x][y] <= 6)
 	{
 		if (front == 1)//进水口在左边
